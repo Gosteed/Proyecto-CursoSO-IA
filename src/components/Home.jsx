@@ -6,6 +6,7 @@ import backgroundGif from '../assets/fondo-header-home.gif'; // 1. Importa el GI
 const Home = () => {
   return (
     <>
+    prueba git
       <div className="p-8 text-gray-200 leading-relaxed space-y-10">
         {/* 2. Aplica el estilo en línea para el fondo */}
         <header className="header text-center space-y-3" style={{ backgroundImage: `url(${backgroundGif})` }}>
