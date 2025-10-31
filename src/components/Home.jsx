@@ -6,7 +6,6 @@ import backgroundGif from '../assets/fondo-header-home.gif'; // 1. Importa el GI
 const Home = () => {
   return (
     <>
-    prueba git
       <div className="p-8 text-gray-200 leading-relaxed space-y-10">
         {/* 2. Aplica el estilo en línea para el fondo */}
         <header className="header text-center space-y-3" style={{ backgroundImage: `url(${backgroundGif})` }}>
@@ -17,7 +16,7 @@ const Home = () => {
         </header>
           <div className="content">
             <section className="max-w-4xl mx-auto space-y-4">
-              <h2 className="text-2xl font-semibold text-blue-300">🌐 Bienvenido al curso</h2>
+              <h2 className="text-2xl font-semibold text-blue-300">Bienvenido al curso</h2>
               <p>
                 Este sitio fue creado para acompañarte en el aprendizaje de <strong>Laboratorio de Sistemas Informáticos</strong>, 
                 una materia clave dentro de la formación técnica en informática. 

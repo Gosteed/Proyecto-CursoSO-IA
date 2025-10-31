@@ -1,16 +1,45 @@
 nav {
-  background-color: var(--bg-surface);
+  background-color: #063472;
   width: 100%;
   color: white;
-  padding: 1rem;
+  padding: 0 1rem; /* Quitamos padding vertical para controlar mejor la altura */
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px; /* Usamos height en lugar de max-height para un tamaño fijo */
 }
 
-nav > ul {
+
+
+.logo {
+  height: 100%; /* El contenedor del logo ocupa toda la altura del nav */
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0; /* Un poco de padding vertical para que la imagen no toque los bordes */
+  cursor: pointer;
+}
+
+.logo img {
+  height: 100%; /* La imagen se ajusta a la altura de su contenedor (.logo) */
+  width: auto;  /* El ancho se ajusta automáticamente para mantener la proporción */
+}
+
+.izq ul {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  align-items: center; /* Alineamos los items de la lista verticalmente */
+  gap: 2rem; /* Aumentamos un poco el espacio */
+  margin: 0; /* Reseteamos márgenes por defecto del ul */
+  padding: 0; /* Reseteamos padding por defecto del ul */
 }
 
-nav li {
+.izq li {
   cursor: pointer;
+  font-size: 1.1rem;
+  transition: color 0.2s;
+}
+
+.izq li:hover {
+  color: var(--accent); /* Usamos una variable de color de general.css */
 }

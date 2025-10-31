@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap');
 :root {
-    --bg-dark: #1a1b26; /* Un azul muy oscuro para el fondo */
+    --bg-dark: #0f1622; /* Un azul muy oscuro para el fondo */
     --bg-surface: #24283b; /* Un color para las "tarjetas" o superficies elevadas */
+    --text-title:#36be50;
     --text-main: #c0caf5; /* Color principal para el texto, legible y suave */
     --text-secondary: #a9b1d6; /* Un poco más apagado para texto secundario */
     --accent: #7aa2f7; /* El azul principal para enlaces, botones y títulos */
@@ -14,7 +14,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: "Momo Trust Sans", sans-serif;
 }
 
 body {
