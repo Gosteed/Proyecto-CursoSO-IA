@@ -1,12 +1,24 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* --- Contenedor Principal --- */
+.home-container {
+    color: rgb(229 231 235); /* text-gray-200 */
+    line-height: 1.625; /* leading-relaxed */
 }
 
+.home-container > * + * {
+    margin-top: 2.5rem; /* space-y-10 */
+}
 
+/* --- Header --- */
+.home-header {
+    text-align: center;
+}
 
-.header {
+.home-header > * + * {
+    margin-top: 0.75rem; /* space-y-3 */
+}
+
+/* Estilos del antiguo .header, ahora aplicados a .home-header */
+.home-header {
     display: flex;
     padding: 150px 20px; /* Ajusté un poco el padding */
     flex-direction: column;
@@ -20,7 +32,7 @@
 }
 
 /* Superposición oscura para mejorar la legibilidad del texto */
-.header::before {
+.home-header::before {
     content: '';
     position: absolute;
     top: 0;
@@ -32,13 +44,26 @@
 }
 
 /* Asegura que el contenido del header esté por encima de la superposición */
-.header > * {
+.home-header > * {
     position: relative;
     z-index: 2;
 }
 
-.content{
-    width: 100vw;
+.home-header-title {
+    font-size: 2.25rem; /* text-4xl */
+    line-height: 2.5rem;
+    font-weight: 700; /* font-bold */
+    color: #ffffff; /* text-blue-400 */
+}
+
+.home-header-subtitle {
+    font-size: 1.125rem; /* text-lg */
+    font-style: italic;
+    color: rgb(209 213 219); /* text-gray-300 */
+}
+
+.home-content{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,34 +72,105 @@
 
 }
 
-section{
+/* --- Secciones Generales --- */
+.home-section {
+    max-width: 56rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-section > * + *, .grid-item > * + * {
+    margin-top: 1rem; /* space-y-4 */
+}
+
+.home-section, .call-to-action {
     display: flex;
     gap: 20px;
     width: 70vw;
-    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;   
 }
 
-header p{
-    font-size: 2rem;
+.section-title {
+    font-size: xx-large; /* text-2xl */
+    line-height: 2rem;
+    font-weight: 600; /* font-semibold */
+    color: var(--text-title); /* text-blue-300 */
 }
 
-h1{
-    color: var(--text-main);
-    font-size: 3.8rem;
+.call-to-action {
+    width: 100vw;
+    background-color: #31a4cc;
+    gap: 0;
+}
+.call-to-action .section-title{
+    color: #de4945;
+    font-size: xx-large;
+    font-weight: bold;
+    background-color: #c1dd63;
+    width: 100%;
+    padding: 2%;
+   
+}
+.call-to-content{
+    padding: 2%;
+    font-size: x-large;
+    font-weight: bold
 }
 
-
-
-h2{
-    color: var(--text-title);
-    font-size: 3.2rem;
-}
-
-.controw{
+/* --- Grid Layout --- */
+.home-grid{
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    column-gap: 8%; /* Mantenemos el espacio horizontal con un porcentaje */
+    row-gap: 2rem; /* Añadimos un espacio vertical fijo cuando los elementos se apilan */
+    margin: 0 8%;
+    flex-wrap: wrap;
+}
+
+.grid-item {
+    flex: 1;
+    min-width: 400px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #31a4cc;
+    padding: 3%;
+    border-radius: 10px;
+}
+
+.grid-item .section-title{
+    color: #c1dd63;
+    font-size: xx-large;
+    font-weight: bold;
+    padding: 10px;
+}
+
+/* --- Listas --- */
+.custom-list {
+    list-style-position: inside;
+    list-style-type: disc; /* list-disc */
+    margin-left: 1.5rem; /* ml-6 */
+}
+
+.custom-list.decimal {
+    list-style-type: decimal; /* list-decimal */
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 1rem; /* mt-4 */
+    padding: 0.5rem 1.5rem; /* px-6 py-2 */
+    background-color: #3b82f6; /* bg-blue-500 */
+    color: white;
+    font-weight: 600; /* font-semibold */
+    border-radius: 0.5rem; /* rounded-lg */
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: #2563eb; /* hover:bg-blue-600 */
 }

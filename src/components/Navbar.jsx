@@ -7,17 +7,16 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="der">
-        <div className="logo" onClick={() => navigate("/")}>
+      <div className="navbar-main">
+        <div className="logo-container" onClick={() => navigate("/")}>
           <img src="src\assets\logo.png" alt="logo" />
         </div>
         <ul>
-          <li onClick={() => navigate("/respuesta")}>Cursada</li>
+          <li onClick={() => navigate("/unidad1")}>Cursada</li>
           <li onClick={() => navigate("/sobreNosotros")}>Sobre Nosotros</li>
-          <li onClick={() => navigate("/respuesta")}>Respuesta AI</li>
         </ul>
       </div>
-      <div className="der"></div>
+      <div className="navbar-secondary"></div>
     </nav>
   )
 }
