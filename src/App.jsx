@@ -5,8 +5,8 @@ import './styles/general.css'
 import './styles/unidades.css'
 import './styles/layout.css'
 import './styles/navbar.css'
-import {  useEffect, useState } from "react"
-import { GoogleGenAI } from "@google/genai";
+import { useEffect, useState } from "react"
+import { GoogleGenerativeAI } from "@google/generative-ai"; // Usamos la clase principal
 import SobreNosotros from "./components/SobreNosotros"
 import Unidad1 from "./unidades/Unidad1";
 import Unidad2 from "./unidades/Unidad2";
@@ -19,42 +19,40 @@ import Unidad8 from "./unidades/Unidad8";
 import Unidad9 from "./unidades/Unidad9";
 import Unidad10 from "./unidades/Unidad10";
 import UnitLayout from "./components/UnitLayout";
-import Respuesta from "./components/Respuesta"
 import ScrollToTop from "./components/ScrollToTop"; // 1. Importamos el nuevo componente
 import PaginaNo from "./components/PaginaNo"
 import Footer from "./components/Footer"
 
 
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-
-const ai = new GoogleGenAI({ apiKey });
-
-const object = {
-        model: "gemini-2.5-flash",
-        contents: "Hola, hablame de los agujeros negros",
-        config: {
-            systemInstruction: "Eres un estudiante secundario deprimido que responde con un tono sarcástico y pesimista.",
-          }      
-        }
-
+const genAI = new GoogleGenerativeAI(apiKey);
 
 function App() {
+  // 1. Creamos un estado para almacenar la sesión de chat.
+  const [chatSession, setChatSession] = useState(null);
 
-  const [content, setContent] = useState("");
-
+  // 2. Usamos useEffect para inicializar el chat UNA SOLA VEZ cuando la app carga.
   useEffect(() => {
-
-    const fetchAI = async () => {
-      const response = await ai.models.generateContentStream(object);
-
-      for await (const chunk of response) {
-        setContent((x) => x + chunk.text);
-      }
+    const initializeChat = async () => {
+      const model = genAI.getGenerativeModel({ model:"gemini-2.5-flash" });
+      
+      // 3. Creamos la sesión de chat con un historial inicial para darle contexto y personalidad.
+      const chat = model.startChat({
+        history: [
+          {
+            role: "user",
+            parts: [{ text: "Hola. A partir de ahora, actuarás como un asistente experto en Sistemas Operativos Linux. Tu objetivo es ayudar a estudiantes de secundaria a entender los temas del curso. Responde de manera clara y didáctica." }],
+          },
+          {
+            role: "model",
+            parts: [{ text: "¡Entendido! Estoy listo para ayudar a los estudiantes con sus dudas sobre Sistemas Operativos Linux. ¿En qué puedo asistirles hoy?" }],
+          },
+        ],
+      });
+      setChatSession(chat);
     };
-    fetchAI();
-
+    initializeChat();
   }, []);
-
 
   return(
     <>
@@ -66,7 +64,8 @@ function App() {
           <Route path="/sobreNosotros" element={<SobreNosotros />} />
 
           {/* Rutas que usan el layout con la barra lateral de IA */}
-          <Route element={<UnitLayout content={content} />}>
+          {/* 4. Pasamos la sesión de chat completa al UnitLayout */}
+          <Route element={<UnitLayout chat={chatSession} />}>
             <Route path="/unidad1" element={<Unidad1/>}/>
             <Route path="/unidad2" element={<Unidad2/>}/>
             <Route path="/unidad3" element={<Unidad3/>}/>
