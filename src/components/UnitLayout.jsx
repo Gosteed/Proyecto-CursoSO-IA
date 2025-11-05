@@ -1,13 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import '../styles/layout.css'; // Asegúrate de que los estilos para el chat estén aquí
+import Code from './Code'; // 1. Importamos el componente Code
+import UnitsIndex from './UnitsIndex'; // Importamos el nuevo índice
 
 // Componente para renderizar mensajes con formato (maneja saltos de línea)
 const Message = ({ role, text }) => {
   const isModel = role === 'model';
+
+  // Expresión regular para encontrar bloques de código ```lenguaje ... ```
+  const codeBlockRegex = /```(\w+)?\n([\s\S]+?)\n```/g;
+  const parts = text.split(codeBlockRegex);
+
   return (
     <div className={`message ${isModel ? 'model-message' : 'user-message'}`}>
-      <p style={{ whiteSpace: 'pre-wrap' }}>{text}</p>
+      {parts.map((part, index) => {
+        // El resultado de split() con una regex con grupos de captura es:
+        // [texto, lenguaje, código, texto, lenguaje, código, ...]
+        if (index % 3 === 1) { // Es el lenguaje del bloque de código
+          const language = part || 'bash'; // Si no se especifica lenguaje, usamos bash por defecto
+          const codeContent = parts[index + 1];
+          // Pasamos el código envuelto en un elemento <code> como espera el componente Code.jsx
+          return <Code key={index} code={<code language={language}>{codeContent}</code>} />;
+        }
+        if (index % 3 === 2) { // Es el contenido del bloque de código, ya lo procesamos
+          return null;
+        }
+        // Es texto plano
+        return <p key={index} style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{part}</p>;
+      })}
     </div>
   );
 };
@@ -75,11 +96,12 @@ const UnitLayout = ({ chat }) => {
 
   return (
     <div className="page-with-sidebar">
+      <UnitsIndex /> {/* 2. Añadimos el índice de unidades */}
       <main className="main-content">
         <Outlet /> {/* Aquí se renderizará el contenido de cada unidad */}
       </main>
       <aside className="sidebar">
-        <h2>Asistente IA</h2>
+        <h2>ITFA IA</h2>
         <div className="chat-container" ref={chatContainerRef}>
           {messages.map((msg, index) => (
             <Message key={index} role={msg.role} text={msg.text} />

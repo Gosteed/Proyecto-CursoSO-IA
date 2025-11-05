@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap');
 :root {
-    --bg-dark: #0f1622; /* Un azul muy oscuro para el fondo */
+    --bg-dark: linear-gradient(to bottom right, rgb(15, 15, 15), rgb(4, 12, 40));
     --bg-surface: #24283b; /* Un color para las "tarjetas" o superficies elevadas */
     --text-title:#36be50;
     --text-main: #c0caf5; /* Color principal para el texto, legible y suave */
@@ -18,10 +18,11 @@
 }
 
 body {
-    background-color: var(--bg-dark);
+    background: var(--bg-dark);
     color: var(--text-main);
     font-size: 16px;
     line-height: 1.6;
+    min-height: 100vh; /* Asegura que el gradiente cubra toda la altura */
 }
 
 /* Scrollbar personalizado para que coincida con el tema */

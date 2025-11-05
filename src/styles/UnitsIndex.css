@@ -1,0 +1,35 @@
+.units-index {
+    background-color: var(--bg-surface);
+    width: 12%;
+    padding: 1rem;
+    border-radius: 8px;
+    height: fit-content; /* Se ajusta al contenido */
+    position: sticky;
+    top: 80px; /* Misma altura que el sidebar del chat */
+}
+
+.units-index ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem; /* Reducimos el espacio entre elementos */
+}
+
+.units-index a {
+    display: block;
+    padding: 0.5rem 0.75rem; /* Padding más pequeño */
+    font-size: 0.7rem; /* Fuente más pequeña */
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.units-index a:hover,
+.units-index a.active {
+    background-color: #414868; /* Un poco más claro que el fondo */
+    color: var(--text-main);
+    font-weight: 600;
+}

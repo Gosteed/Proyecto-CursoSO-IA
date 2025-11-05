@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/unidades.css';
+import Code from "../components/Code.jsx";
+import InfoBlock from "../components/InfoBlock.jsx";
 
 const Unidad7 = () => {
   return (
@@ -81,12 +83,10 @@ const Unidad7 = () => {
             Es una técnica de engaño que busca obtener datos personales (como contraseñas o información bancaria) 
             simulando ser una entidad confiable, como un banco o servicio conocido.
           </p>
-          <pre className="code-block">
-            <code>
+          <InfoBlock content={<code>
 {`Ejemplo de phishing:
 "Estimado usuario, su cuenta será suspendida. Inicie sesión aquí para verificar sus datos: www.banco-falso.com"`}
-            </code>
-          </pre>
+          </code>} />
 
           <h3 className="subsection-title">Ingeniería social</h3>
           <p>
@@ -107,9 +107,7 @@ const Unidad7 = () => {
           </ul>
 
           <h3 className="subsection-title">Ejemplo de contraseña segura</h3>
-          <pre className="code-block">
-            <code>Qx!9aF2@rZb1</code>
-          </pre>
+          <InfoBlock content={<code>Qx!9aF2@rZb1</code>} />
           <p>
             Combina mayúsculas, minúsculas, números y símbolos.  
             Evitá palabras comunes o datos personales.
@@ -130,14 +128,12 @@ const Unidad7 = () => {
           </ul>
 
           <h3 className="subsection-title">Ejemplos prácticos</h3>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`sudo ufw enable
 sudo ufw status
 sudo apt install clamav
 clamscan --infected --recursive /home`}
-            </code>
-          </pre>
+          </code>} />
         </section>
 
         <section className="unit-section">
@@ -146,12 +142,10 @@ clamscan --infected --recursive /home`}
             Una de las defensas más importantes contra pérdidas o ataques es realizar <strong>backups</strong> (copias de seguridad).  
             Estas pueden hacerse manualmente o con herramientas automáticas.
           </p>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`# Copia de seguridad simple
 tar -cvzf backup-home.tar.gz /home/alumno`}
-            </code>
-          </pre>
+          </code>} />
           <p>
             Guardar los respaldos en un disco externo o en la nube garantiza que, ante cualquier problema, la información pueda recuperarse.
           </p>

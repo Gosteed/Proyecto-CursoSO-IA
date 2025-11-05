@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/unidades.css';
+import Code from "../components/Code.jsx";
+import InfoBlock from "../components/InfoBlock.jsx";
 
 const Unidad6 = () => {
   return (
@@ -59,14 +61,12 @@ const Unidad6 = () => {
             <li><strong>Puerta de enlace (Gateway):</strong> permite salir de la red local hacia Internet.</li>
           </ul>
 
-          <pre className="code-block">
-            <code>
+          <InfoBlock content={<code>
 {`Ejemplo de configuración:
 IP: 192.168.1.10
 Máscara: 255.255.255.0
 Puerta de enlace: 192.168.1.1`}
-            </code>
-          </pre>
+          </code>} />
         </section>
 
         <section className="unit-section">
@@ -77,28 +77,23 @@ Puerta de enlace: 192.168.1.1`}
             Muestra o configura los parámetros de red del sistema.  
             Aunque <code>ifconfig</code> sigue siendo común, el comando moderno es <code>ip</code>.
           </p>
-          <pre className="code-block">
-            <code>
-{`ifconfig
-ip addr show`}
-            </code>
-          </pre>
+          <Code code={<code>{`ifconfig\nip addr show`}</code>} />
 
           <h3 className="subsection-title">ping</h3>
           <p>Verifica la conectividad con otro equipo de la red.</p>
-          <pre className="code-block"><code>ping 8.8.8.8</code></pre>
+          <Code code={<code>ping 8.8.8.8</code>} />
 
           <h3 className="subsection-title">netstat</h3>
           <p>Muestra conexiones de red activas, puertos abiertos y estadísticas.</p>
-          <pre className="code-block"><code>netstat -tuln</code></pre>
+          <Code code={<code>netstat -tuln</code>} />
 
           <h3 className="subsection-title">traceroute</h3>
           <p>Permite rastrear la ruta que sigue un paquete hasta su destino.</p>
-          <pre className="code-block"><code>traceroute www.google.com</code></pre>
+          <Code code={<code>traceroute www.google.com</code>} />
 
           <h3 className="subsection-title">nslookup</h3>
           <p>Consulta servidores DNS para resolver nombres de dominio.</p>
-          <pre className="code-block"><code>nslookup openai.com</code></pre>
+          <Code code={<code>nslookup openai.com</code>} />
         </section>
 
         <section className="unit-section">
@@ -108,8 +103,7 @@ ip addr show`}
             A continuación se muestra un ejemplo de configuración estática:
           </p>
 
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`sudo nano /etc/network/interfaces
 
 auto eth0
@@ -118,10 +112,9 @@ iface eth0 inet static
   netmask 255.255.255.0
   gateway 192.168.1.1
   dns-nameservers 8.8.8.8`}
-            </code>
-          </pre>
+          </code>} />
           <p>Luego de editar, se reinicia la red con:</p>
-          <pre className="code-block"><code>sudo systemctl restart networking</code></pre>
+          <Code code={<code>sudo systemctl restart networking</code>} />
         </section>
 
         <section className="unit-section">
@@ -130,11 +123,9 @@ iface eth0 inet static
             En la mayoría de los entornos, las IP se asignan automáticamente mediante un servidor <strong>DHCP</strong> (Dynamic Host Configuration Protocol).  
             Este servicio entrega direcciones IP dinámicas sin necesidad de configuración manual.
           </p>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`iface eth0 inet dhcp`}
-            </code>
-          </pre>
+          </code>} />
           <p>
             Esta opción se utiliza, por ejemplo, en redes domésticas o instituciones donde todos los equipos obtienen 
             su configuración automáticamente al conectarse.
@@ -147,9 +138,7 @@ iface eth0 inet static
             SSH (<strong>Secure Shell</strong>) permite conectarse a otro equipo Linux de manera segura a través de la red.  
             Es una herramienta esencial para la administración remota de sistemas.
           </p>
-          <pre className="code-block">
-            <code>ssh usuario@192.168.1.10</code>
-          </pre>
+          <Code code={<code>ssh usuario@192.168.1.10</code>} />
           <p>
             Si el equipo remoto tiene configurado el servicio <code>sshd</code>, 
             podrás acceder a su terminal como si estuvieras físicamente en él.

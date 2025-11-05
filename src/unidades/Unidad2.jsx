@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/unidades.css';
+import Code from '../components/Code';
 
 const Unidad2 = () => {
   return (
@@ -66,12 +67,13 @@ const Unidad2 = () => {
             <li>Crea un nuevo archivo llamado <code>hola.sh</code>.</li>
             <li>Escribí el siguiente contenido:</li>
           </ol>
-          <pre className="code-block">
+          <Code code={
+          
             <code>
 {`#!/bin/bash
 echo "Hola, este es mi primer script en Bash!"`}
             </code>
-          </pre>
+          }/>
           <ol className="unit-list decimal" start="3">
             <li>Guardá el archivo y dale permisos de ejecución:</li>
           </ol>
@@ -89,7 +91,7 @@ echo "Hola, este es mi primer script en Bash!"`}
 
         <section className="unit-section">
           <h2 className="section-title">Estructura básica de un script Bash</h2>
-          <pre className="code-block">
+          <Code code={
             <code>
 {`#!/bin/bash
 # Esto es un comentario
@@ -112,7 +114,7 @@ do
   echo "Iteración número $i"
 done`}
             </code>
-          </pre>
+          }/>
           <p>
             En Bash, el símbolo <code>$</code> se usa para acceder al valor de una variable.  
             Las estructuras condicionales (<code>if</code>, <code>else</code>) y los bucles (<code>for</code>, <code>while</code>) permiten ejecutar acciones de forma controlada.

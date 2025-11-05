@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/unidades.css';
+import Code from "../components/Code.jsx";
+import InfoBlock from "../components/InfoBlock.jsx";
 
 const Unidad3 = () => {
   return (
@@ -80,53 +82,39 @@ const Unidad3 = () => {
           <h2 className="section-title">Creación y gestión de usuarios</h2>
 
           <h3 className="subsection-title">Crear un nuevo usuario</h3>
-          <pre className="code-block">
-            <code>sudo adduser juan</code>
-          </pre>
+          <Code code={<code>sudo adduser juan</code>} />
           <p>
             Este comando crea un usuario llamado <code>juan</code>, solicita una contraseña 
             y crea su carpeta personal en <code>/home/juan</code>.
           </p>
 
           <h3 className="subsection-title">Eliminar un usuario</h3>
-          <pre className="code-block">
-            <code>sudo deluser juan</code>
-          </pre>
+          <Code code={<code>sudo deluser juan</code>} />
           <p>
             Si querés eliminar también su carpeta personal, usá:
           </p>
-          <pre className="code-block">
-            <code>sudo deluser --remove-home juan</code>
-          </pre>
+          <Code code={<code>sudo deluser --remove-home juan</code>} />
 
           <h3 className="subsection-title">Modificar un usuario</h3>
           <p>Para cambiar el nombre, el grupo o la carpeta de un usuario:</p>
-          <pre className="code-block">
-            <code>sudo usermod -d /nuevohome/juan juan</code>
-          </pre>
+          <Code code={<code>sudo usermod -d /nuevohome/juan juan</code>} />
         </section>
 
         <section className="unit-section">
           <h2 className="section-title">Gestión de grupos</h2>
           <p>
             Los <strong>grupos</strong> permiten asignar permisos a varios usuarios al mismo tiempo.  
-            En lugar de configurar a cada persona, simplemente se agregan al grupo que corresponda.
+            En lugar de configurar a cada persona, simplementze se agregan al grupo que corresponda.
           </p>
 
           <h3 className="subsection-title">Crear un grupo</h3>
-          <pre className="code-block">
-            <code>sudo groupadd profesores</code>
-          </pre>
+          <Code code={<code>sudo groupadd profesores</code>} />
 
           <h3 className="subsection-title">Agregar un usuario a un grupo</h3>
-          <pre className="code-block">
-            <code>sudo usermod -aG profesores juan</code>
-          </pre>
+          <Code code={<code>sudo usermod -aG profesores juan</code>} />
 
           <h3 className="subsection-title">Listar los grupos de un usuario</h3>
-          <pre className="code-block">
-            <code>groups juan</code>
-          </pre>
+          <Code code={<code>groups juan</code>} />
         </section>
 
         <section className="unit-section">
@@ -136,11 +124,9 @@ const Unidad3 = () => {
             Además, define qué puede hacer cada tipo de usuario: leer, escribir o ejecutar.
           </p>
 
-          <pre className="code-block">
-            <code>
+          <InfoBlock content={<code>
 {`-rw-r--r-- 1 juan profesores 1024 abr 15 10:00 documento.txt`}
-            </code>
-          </pre>
+          </code>} />
 
           <p>Desglosemos este ejemplo:</p>
           <ul className="unit-list">
@@ -159,31 +145,23 @@ const Unidad3 = () => {
           <h2 className="section-title">Cambiar permisos, propietario y grupo</h2>
 
           <h3 className="subsection-title">Cambiar permisos con chmod</h3>
-          <pre className="code-block">
-            <code>chmod 755 script.sh</code>
-          </pre>
+          <Code code={<code>chmod 755 script.sh</code>} />
           <p>
             Este comando asigna permisos de lectura, escritura y ejecución al propietario, 
             y solo lectura y ejecución al grupo y a los demás.
           </p>
 
           <p>También puede hacerse de forma simbólica:</p>
-          <pre className="code-block">
-            <code>chmod u+x archivo.txt</code>
-          </pre>
+          <Code code={<code>chmod u+x archivo.txt</code>} />
           <p>
             En este caso, <code>u</code> (user) gana permiso de ejecución sobre el archivo.
           </p>
 
           <h3 className="subsection-title">Cambiar propietario con chown</h3>
-          <pre className="code-block">
-            <code>sudo chown juan archivo.txt</code>
-          </pre>
+          <Code code={<code>sudo chown juan archivo.txt</code>} />
 
           <h3 className="subsection-title">Cambiar grupo con chgrp</h3>
-          <pre className="code-block">
-            <code>sudo chgrp profesores archivo.txt</code>
-          </pre>
+          <Code code={<code>sudo chgrp profesores archivo.txt</code>} />
         </section>
 
         <section className="unit-section">

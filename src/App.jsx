@@ -7,6 +7,7 @@ import './styles/layout.css'
 import './styles/navbar.css'
 import { useEffect, useState } from "react"
 import { GoogleGenerativeAI } from "@google/generative-ai"; // Usamos la clase principal
+import { text as systemPrompt } from "./Prompt.jsx"; // 1. Importamos el prompt del curso
 import SobreNosotros from "./components/SobreNosotros"
 import Unidad1 from "./unidades/Unidad1";
 import Unidad2 from "./unidades/Unidad2";
@@ -18,6 +19,7 @@ import Unidad7 from "./unidades/Unidad7";
 import Unidad8 from "./unidades/Unidad8";
 import Unidad9 from "./unidades/Unidad9";
 import Unidad10 from "./unidades/Unidad10";
+import Unidad11 from "./unidades/Unidad11";
 import UnitLayout from "./components/UnitLayout";
 import ScrollToTop from "./components/ScrollToTop"; // 1. Importamos el nuevo componente
 import PaginaNo from "./components/PaginaNo"
@@ -40,11 +42,11 @@ function App() {
       const chat = model.startChat({
         history: [
           {
-            role: "user",
-            parts: [{ text: "Hola. A partir de ahora, actuarás como un asistente experto en Sistemas Operativos Linux. Tu objetivo es ayudar a estudiantes de secundaria a entender los temas del curso. Responde de manera clara y didáctica." }],
+            role: "user", // 2. Usamos el prompt importado para darle el contexto completo
+            parts: [{ text: systemPrompt }],
           },
           {
-            role: "model",
+            role: "model", // 3. Ajustamos la respuesta inicial del modelo
             parts: [{ text: "¡Entendido! Estoy listo para ayudar a los estudiantes con sus dudas sobre Sistemas Operativos Linux. ¿En qué puedo asistirles hoy?" }],
           },
         ],
@@ -76,6 +78,7 @@ function App() {
             <Route path="/unidad8" element={<Unidad8/>}/>
             <Route path="/unidad9" element={<Unidad9/>}/>
             <Route path="/unidad10" element={<Unidad10/>}/>
+            <Route path="/unidad11" element={<Unidad11/>}/>
           </Route>
 
           <Route path="*" element={<PaginaNo />} />

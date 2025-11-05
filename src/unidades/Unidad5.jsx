@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/unidades.css';
+import Code from "../components/Code.jsx";
+import InfoBlock from "../components/InfoBlock.jsx";
 
 const Unidad5 = () => {
   return (
@@ -57,41 +59,34 @@ const Unidad5 = () => {
             Una <strong>partición</strong> es como una “subdivisión” del disco.  
             Permite tener varios sistemas operativos o separar datos del sistema para mejorar la organización y la seguridad.
           </p>
-          <pre className="code-block">
-            <code>
+          <InfoBlock content={<code>
 {`[ Disco físico ]
  ├── Partición 1 → Sistema operativo
  ├── Partición 2 → Datos personales
  └── Partición 3 → Copias de seguridad`}
-            </code>
-          </pre>
+          </code>} />
         </section>
 
         <section className="unit-section">
           <h2 className="section-title">Comandos útiles para administrar discos</h2>
 
           <h3 className="subsection-title">Ver discos conectados</h3>
-          <pre className="code-block"><code>lsblk</code></pre>
+          <Code code={<code>lsblk</code>} />
           <p>Muestra todos los discos y particiones del sistema, junto con sus puntos de montaje.</p>
 
           <h3 className="subsection-title">Ver información detallada</h3>
-          <pre className="code-block"><code>sudo fdisk -l</code></pre>
+          <Code code={<code>sudo fdisk -l</code>} />
           <p>Lista las particiones y sus tamaños, tipos y sistemas de archivos.</p>
 
           <h3 className="subsection-title">Montar un disco manualmente</h3>
-          <pre className="code-block">
-            <code>
-{`sudo mount /dev/sdb1 /mnt/usb
-ls /mnt/usb`}
-            </code>
-          </pre>
+          <Code code={<code>{`sudo mount /dev/sdb1 /mnt/usb\nls /mnt/usb`}</code>} />
           <p>Esto monta la partición <code>/dev/sdb1</code> en la carpeta <code>/mnt/usb</code> para poder acceder a sus archivos.</p>
 
           <h3 className="subsection-title">Desmontar un disco</h3>
-          <pre className="code-block"><code>sudo umount /mnt/usb</code></pre>
+          <Code code={<code>sudo umount /mnt/usb</code>} />
 
           <h3 className="subsection-title">Formatear una partición</h3>
-          <pre className="code-block"><code>sudo mkfs.ext4 /dev/sdb1</code></pre>
+          <Code code={<code>sudo mkfs.ext4 /dev/sdb1</code>} />
           <p>Este comando crea un nuevo sistema de archivos EXT4 sobre la partición indicada.</p>
         </section>
 
@@ -129,13 +124,11 @@ ls /mnt/usb`}
             Divide los datos entre dos o más discos, aumentando la velocidad de lectura y escritura.  
             Sin embargo, si uno falla, se pierden todos los datos.
           </p>
-          <pre className="code-block">
-            <code>
+          <InfoBlock content={<code>
 {`[ Disco 1 ] → Parte A
 [ Disco 2 ] → Parte B
 (Sin redundancia)`}
-            </code>
-          </pre>
+          </code>} />
 
           <h3 className="subsection-title">RAID 1 – Espejo</h3>
           <p>
@@ -143,25 +136,21 @@ ls /mnt/usb`}
             Si uno falla, el otro sigue funcionando.  
             Se usa para proteger información crítica.
           </p>
-          <pre className="code-block">
-            <code>
+          <InfoBlock content={<code>
 {`[ Disco 1 ] → Datos completos
 [ Disco 2 ] → Copia exacta`}
-            </code>
-          </pre>
+          </code>} />
 
           <h3 className="subsection-title">RAID 5 – Rendimiento y seguridad</h3>
           <p>
             Combina velocidad y redundancia usando al menos tres discos.  
             Los datos y la información de paridad se distribuyen entre todos.
           </p>
-          <pre className="code-block">
-            <code>
+          <InfoBlock content={<code>
 {`[ Disco 1 ] → Datos + Paridad
 [ Disco 2 ] → Datos + Paridad
 [ Disco 3 ] → Datos + Paridad`}
-            </code>
-          </pre>
+          </code>} />
 
           <h3 className="subsection-title">RAID 10 – Rendimiento y respaldo</h3>
           <p>
@@ -177,13 +166,11 @@ ls /mnt/usb`}
             Este tipo de RAID no requiere hardware especial.
           </p>
           <p>Ejemplo de creación de un RAID 1 con dos discos:</p>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc`}
-            </code>
-          </pre>
+          </code>} />
           <p>Luego, podés verificar el estado con:</p>
-          <pre className="code-block"><code>cat /proc/mdstat</code></pre>
+          <Code code={<code>cat /proc/mdstat</code>} />
         </section>
 
         <section className="unit-section">

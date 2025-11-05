@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/unidades.css';
+import Code from "../components/Code.jsx";
+import InfoBlock from "../components/InfoBlock.jsx";
 
 const Unidad1 = () => {
     return <>
@@ -87,17 +89,17 @@ const Unidad1 = () => {
             Todas interactúan con el sistema a través del kernel, directa o indirectamente.
             </p>
 
-            <pre className="code-block">
-            <code>
-        {`[ Usuario ]
+            <InfoBlock content={
+                <code>
+                    {`[ Usuario ]
             ↓
         [ Shell / Terminal ]
             ↓
         [ Kernel ]
             ↓
         [ Hardware ]`}
-            </code>
-            </pre>
+                </code>
+            } />
         </section>
 
         <section className="unit-section">
@@ -122,17 +124,17 @@ const Unidad1 = () => {
             y a partir de allí se ramifican las demás carpetas del sistema.
             </p>
 
-            <pre className="code-block">
-            <code>
-        {`/
+            <InfoBlock content={
+                <code>
+                    {`/
         ├── bin      → Comandos básicos del sistema
         ├── etc      → Archivos de configuración
         ├── home     → Carpetas personales de los usuarios
         ├── var      → Archivos temporales y logs
         ├── usr      → Programas y librerías de usuario
         └── tmp      → Archivos temporales`}
-            </code>
-            </pre>
+                </code>
+            } />
 
             <p>
             En Linux <strong>todo es un archivo</strong>: los discos, las impresoras, los procesos e incluso la memoria. 
@@ -158,26 +160,26 @@ const Unidad1 = () => {
 
             <h3 className="subsection-title">pwd — Print Working Directory</h3>
             <p>Muestra la ruta completa de la carpeta actual.</p>
-            <pre className="code-block"><code>pwd</code></pre>
+            <Code code={<code>pwd</code>} />
 
             <h3 className="subsection-title">ls — Listar contenido</h3>
             <p>Muestra los archivos y carpetas del directorio actual.</p>
-            <pre className="code-block"><code>ls -l   # detalles<br/>ls -a   # muestra ocultos</code></pre>
+            <Code code={<code>ls -l   # detalles<br/>ls -a   # muestra ocultos</code>} />
 
             <h3 className="subsection-title">cd — Cambiar de directorio</h3>
-            <pre className="code-block"><code>cd /etc<br/>cd ~<br/>cd ..</code></pre>
+            <Code code={<code>cd /etc<br/>cd ~<br/>cd ..</code>} />
 
             <h3 className="subsection-title">mkdir — Crear carpetas</h3>
-            <pre className="code-block"><code>mkdir proyectos<br/>mkdir -p trabajos/2025/informes</code></pre>
+            <Code code={<code>mkdir proyectos<br/>mkdir -p trabajos/2025/informes</code>} />
 
             <h3 className="subsection-title">cat — Ver contenido de archivos</h3>
-            <pre className="code-block"><code>cat notas.txt<br/>cat parte1.txt parte2.txt &gt; completo.txt</code></pre>
+            <Code code={<code>cat notas.txt<br/>cat parte1.txt parte2.txt &gt; completo.txt</code>} />
 
             <h3 className="subsection-title">cp / mv — Copiar o mover archivos</h3>
-            <pre className="code-block"><code>cp documento.txt copia.txt<br/>mv copia.txt informe.txt</code></pre>
+            <Code code={<code>cp documento.txt copia.txt<br/>mv copia.txt informe.txt</code>} />
 
             <h3 className="subsection-title">rm — Eliminar archivos</h3>
-            <pre className="code-block"><code>rm archivo.txt<br/>rm -r carpeta<br/>rm -rf carpeta  # elimina sin preguntar</code></pre>
+            <Code code={<code>rm archivo.txt<br/>rm -r carpeta<br/>rm -rf carpeta  # elimina sin preguntar</code>} />
         </section>
 
         <section className="unit-section">
@@ -185,13 +187,9 @@ const Unidad1 = () => {
             <p>
             Todos los comandos siguen el mismo formato:
             </p>
-            <pre className="code-block">
-            <code>comando [opciones] [argumentos]</code>
-            </pre>
+            <Code code={<code>comando [opciones] [argumentos]</code>} />
             <p>Ejemplo:</p>
-            <pre className="code-block">
-            <code>ls -l /home/alumno</code>
-            </pre>
+            <Code code={<code>ls -l /home/alumno</code>} />
         </section>
 
         <section className="unit-section">

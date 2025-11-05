@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/unidades.css';
+import Code from "../components/Code.jsx";
+import InfoBlock from "../components/InfoBlock.jsx";
 
 const Unidad10 = () => {
   return (
@@ -55,13 +57,11 @@ const Unidad10 = () => {
             y el servidor web (por ejemplo, Apache) te envía el contenido.
           </p>
 
-          <pre className="code-block">
-            <code>
+          <InfoBlock content={<code>
 {`[ Cliente ] ⇄ [ Servidor ]
 Navegador   ⇄ Apache Web Server
 Terminal SSH ⇄ Servidor remoto`}
-            </code>
-          </pre>
+          </code>} />
         </section>
 
         <section className="unit-section">
@@ -72,20 +72,20 @@ Terminal SSH ⇄ Servidor remoto`}
           </p>
 
           <h3 className="subsection-title">Instalación del servidor SSH</h3>
-          <pre className="code-block"><code>sudo apt install openssh-server</code></pre>
+          <Code code={<code>sudo apt install openssh-server</code>} />
 
           <h3 className="subsection-title">Verificación del servicio</h3>
-          <pre className="code-block"><code>sudo systemctl status ssh</code></pre>
+          <Code code={<code>sudo systemctl status ssh</code>} />
 
           <h3 className="subsection-title">Conexión desde otro equipo</h3>
-          <pre className="code-block"><code>ssh usuario@ip_del_servidor</code></pre>
+          <Code code={<code>ssh usuario@ip_del_servidor</code>} />
           <p>
             Por ejemplo: <code>ssh alumno@192.168.1.10</code>  
             Si la conexión es exitosa, tendrás acceso remoto a la terminal del otro equipo.
           </p>
 
           <h3 className="subsection-title">Copiar archivos mediante SSH</h3>
-          <pre className="code-block"><code>scp documento.txt alumno@192.168.1.10:/home/alumno/</code></pre>
+          <Code code={<code>scp documento.txt alumno@192.168.1.10:/home/alumno/</code>} />
           <p>
             Este comando transfiere archivos de forma segura mediante el protocolo SCP (basado en SSH).
           </p>
@@ -100,18 +100,18 @@ Terminal SSH ⇄ Servidor remoto`}
           </p>
 
           <h3 className="subsection-title">Instalar un servidor FTP</h3>
-          <pre className="code-block"><code>sudo apt install vsftpd</code></pre>
+          <Code code={<code>sudo apt install vsftpd</code>} />
 
           <h3 className="subsection-title">Iniciar y habilitar el servicio</h3>
-          <pre className="code-block"><code>sudo systemctl start vsftpd<br/>sudo systemctl enable vsftpd</code></pre>
+          <Code code={<code>{`sudo systemctl start vsftpd\nsudo systemctl enable vsftpd`}</code>} />
 
           <h3 className="subsection-title">Conectarse al servidor</h3>
-          <pre className="code-block"><code>ftp 192.168.1.10</code></pre>
+          <Code code={<code>ftp 192.168.1.10</code>} />
 
           <p>
             Para mayor seguridad, usá:
           </p>
-          <pre className="code-block"><code>sftp alumno@192.168.1.10</code></pre>
+          <Code code={<code>sftp alumno@192.168.1.10</code>} />
         </section>
 
         <section className="unit-section">
@@ -122,10 +122,10 @@ Terminal SSH ⇄ Servidor remoto`}
           </p>
 
           <h3 className="subsection-title">Instalación de Apache</h3>
-          <pre className="code-block"><code>sudo apt install apache2</code></pre>
+          <Code code={<code>sudo apt install apache2</code>} />
 
           <h3 className="subsection-title">Comprobar el servicio</h3>
-          <pre className="code-block"><code>sudo systemctl status apache2</code></pre>
+          <Code code={<code>sudo systemctl status apache2</code>} />
 
           <p>
             Una vez instalado, abrí tu navegador y escribí <code>http://localhost</code>.  
@@ -136,11 +136,11 @@ Terminal SSH ⇄ Servidor remoto`}
           <p>
             El contenido por defecto de Apache se guarda en:
           </p>
-          <pre className="code-block"><code>/var/www/html</code></pre>
+          <InfoBlock content={<code>/var/www/html</code>} />
           <p>
             Podés crear tu propia página reemplazando el archivo <code>index.html</code> por uno personalizado.
           </p>
-          <pre className="code-block"><code>sudo nano /var/www/html/index.html</code></pre>
+          <Code code={<code>sudo nano /var/www/html/index.html</code>} />
 
           <p>
             Luego, guardá los cambios y actualizá la página en el navegador.

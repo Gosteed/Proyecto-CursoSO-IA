@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/unidades.css';
+import InfoBlock from "../components/InfoBlock.jsx";
 
 const Unidad4 = () => {
   return (
@@ -57,8 +58,7 @@ const Unidad4 = () => {
             El hipervisor se encarga de repartir los recursos (CPU, memoria, disco, red) entre las máquinas virtuales, 
             garantizando que todas funcionen correctamente y sin interferir entre sí.
           </p>
-          <pre className="code-block">
-            <code>
+          <InfoBlock content={<code>
 {`[ Hardware real ]
         ↓
 [ Hipervisor / VirtualBox ]
@@ -66,8 +66,7 @@ const Unidad4 = () => {
 [ Máquina Virtual 1 ]  → Linux
 [ Máquina Virtual 2 ]  → Windows
 [ Máquina Virtual 3 ]  → Servidor Ubuntu`}
-            </code>
-          </pre>
+          </code>} />
           <p>
             De esta manera, una sola computadora puede comportarse como varias a la vez.
           </p>

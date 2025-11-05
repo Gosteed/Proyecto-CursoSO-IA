@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import '../styles/unidades.css';
+import Code from "../components/Code.jsx";
 
 const Unidad8 = () => {
   return (
@@ -53,22 +54,18 @@ const Unidad8 = () => {
             Un <strong>script Bash</strong> es un archivo de texto que contiene una serie de comandos que el sistema ejecuta secuencialmente.  
             Es como darle al sistema una lista de tareas para realizar automáticamente.
           </p>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`#!/bin/bash
 echo "Hola, este es mi primer script!"
 date`}
-            </code>
-          </pre>
+          </code>} />
           <p>
             Para ejecutar el script, primero debés darle permisos y luego correrlo:
           </p>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`chmod +x script.sh
 ./script.sh`}
-            </code>
-          </pre>
+          </code>} />
         </section>
 
         <section className="unit-section">
@@ -78,8 +75,7 @@ date`}
             También es posible pedir datos al usuario mediante <code>read</code>.
           </p>
 
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`#!/bin/bash
 nombre="Agustín"
 echo "Hola $nombre, bienvenido a Bash!"
@@ -87,8 +83,7 @@ echo "Hola $nombre, bienvenido a Bash!"
 echo "¿Cuál es tu lenguaje favorito?"
 read lenguaje
 echo "Excelente elección: $lenguaje"`}
-            </code>
-          </pre>
+          </code>} />
           <p>
             En Bash no se usan espacios al asignar variables (<code>nombre="valor"</code>).
           </p>
@@ -101,19 +96,16 @@ echo "Excelente elección: $lenguaje"`}
             En Bash, la sintaxis básica es:
           </p>
 
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`if [ condición ]; then
   comando_si_verdadero
 else
   comando_si_falso
 fi`}
-            </code>
-          </pre>
+          </code>} />
 
           <p>Ejemplo práctico:</p>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`#!/bin/bash
 echo "Ingrese su edad:"
 read edad
@@ -123,8 +115,7 @@ if [ $edad -ge 18 ]; then
 else
   echo "Sos menor de edad."
 fi`}
-            </code>
-          </pre>
+          </code>} />
         </section>
 
         <section className="unit-section">
@@ -134,29 +125,25 @@ fi`}
           <p>
             El bucle <code>for</code> repite una acción una cantidad determinada de veces.
           </p>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`for i in 1 2 3 4 5
 do
   echo "Iteración número $i"
 done`}
-            </code>
-          </pre>
+          </code>} />
 
           <h3 className="subsection-title">while</h3>
           <p>
             El bucle <code>while</code> se ejecuta mientras la condición sea verdadera.
           </p>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`contador=1
 while [ $contador -le 5 ]
 do
   echo "Contador: $contador"
   contador=$((contador+1))
 done`}
-            </code>
-          </pre>
+          </code>} />
         </section>
 
         <section className="unit-section">
@@ -165,16 +152,14 @@ done`}
             Las <strong>funciones</strong> permiten organizar el código en bloques reutilizables.  
             Se definen una vez y pueden llamarse varias veces dentro del script.
           </p>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`saludo() {
   echo "Hola $1, bienvenido!"
 }
 
 saludo "Alumno"
 saludo "Profesor"`}
-            </code>
-          </pre>
+          </code>} />
           <p>
             El parámetro <code>$1</code> representa el primer argumento pasado a la función.
           </p>
@@ -184,8 +169,7 @@ saludo "Profesor"`}
           <h2 className="section-title">Ejemplos de automatización real</h2>
 
           <h3 className="subsection-title">Script 1: Copia de seguridad automática</h3>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`#!/bin/bash
 fecha=$(date +%Y-%m-%d)
 origen="/home/alumno/Documentos"
@@ -193,12 +177,10 @@ destino="/home/alumno/Backup"
 
 tar -czf $destino/backup-$fecha.tar.gz $origen
 echo "Backup realizado exitosamente el $fecha"`}
-            </code>
-          </pre>
+          </code>} />
 
           <h3 className="subsection-title">Script 2: Monitoreo de uso de disco</h3>
-          <pre className="code-block">
-            <code>
+          <Code code={<code>
 {`#!/bin/bash
 uso=$(df -h / | awk 'NR==2 {print $5}' | tr -d '%')
 if [ $uso -ge 80 ]; then
@@ -206,8 +188,7 @@ if [ $uso -ge 80 ]; then
 else
   echo "El uso del disco es normal ($uso%)."
 fi`}
-            </code>
-          </pre>
+          </code>} />
         </section>
 
         <section className="unit-section">
@@ -216,9 +197,9 @@ fi`}
             Recordá que los scripts deben tener permisos de ejecución para poder ser ejecutados.  
             Para ello usá:
           </p>
-          <pre className="code-block"><code>chmod +x mi_script.sh</code></pre>
+          <Code code={<code>chmod +x mi_script.sh</code>} />
           <p>Y luego se ejecutan con:</p>
-          <pre className="code-block"><code>./mi_script.sh</code></pre>
+          <Code code={<code>./mi_script.sh</code>} />
         </section>
 
         <section className="unit-section">
@@ -226,7 +207,7 @@ fi`}
           <p>
             Si tu script no funciona como esperabas, podés ejecutarlo en modo depuración:
           </p>
-          <pre className="code-block"><code>bash -x mi_script.sh</code></pre>
+          <Code code={<code>bash -x mi_script.sh</code>} />
           <p>
             Esto mostrará línea por línea qué está ejecutando el sistema, ayudando a encontrar errores de sintaxis o lógica.
           </p>
