@@ -1,0 +1,9 @@
+body{
+    text-align: center;
+}
+
+#facha{
+    width: 80vw;
+    margin: 0 auto;
+    border: 10px red;
+}

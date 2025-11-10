@@ -116,7 +116,7 @@ const UnitLayout = ({ chat }) => {
             placeholder={chat ? "Pregúntame algo..." : "Cargando IA..."}
             disabled={!chat || isLoading}
           />
-          <button type="submit" disabled={!chat || isLoading}>Enviar</button>
+          <button className="send-button" type="submit" disabled={!chat || isLoading}>Enviar</button>
         </form>
       </aside>
     </div>
