@@ -31,12 +31,11 @@ const SobreNosotros = () => {
             <div className="home-grid">
               <div className="grid-item">
                 <h3>Maximo Leonel Bustos</h3>
-                <p>Responsable del diseño de la interfaz, la experiencia de usuario y la maquetación de los componentes en React.</p>
+                <p>Encargado de la integración con la API de Gemini, la lógica del chat de IA y la gestión del estado de la aplicación.</p>
               </div>
               <div className="grid-item">
                 <h3>Agustin Emil Giardino</h3>
-                <p>Encargado de la integración con la API de Gemini, la lógica del chat de IA y la gestión del estado de la aplicación.</p>
-              </div>
+                <p>Responsable del diseño de la interfaz, la experiencia de usuario, la maquetación de los componentes en React. y armado del chat de IA tanto en su logica como en su interfaz</p>              </div>
               <div className="grid-item">
                 <h3>Federico Ariel Arce</h3>
                 <p>A cargo de la investigación, redacción y estructuración de todo el contenido teórico y práctico de las unidades del curso.</p>

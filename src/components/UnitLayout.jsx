@@ -25,6 +25,9 @@ const MarkdownRenderer = ({ text }) => {
         if (line.startsWith('### ')) {
           return <h3 key={i} style={{ marginTop: '0.8rem', marginBottom: '0.4rem' }}>{renderLine(line.substring(4))}</h3>;
         }
+        if (line.startsWith('####')) {
+          return <h4 key={i} style={{ marginTop: '0.6rem', marginBottom: '0.3rem' }}>{renderLine(line.substring(4))}</h4>;
+        }
         if (line.startsWith('* ')) {
           return <li key={i}>{renderLine(line.substring(2))}</li>;
         }
