@@ -60,7 +60,7 @@ const UnitLayout = ({ chat }) => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
-  }, [messages, isLoading]);
+  }, [messages.length]);
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -106,7 +106,7 @@ const UnitLayout = ({ chat }) => {
           {messages.map((msg, index) => (
             <Message key={index} role={msg.role} text={msg.text} />
           ))}
-          {isLoading && messages[messages.length - 1]?.role === 'user' && <Message role="model" text="..." />}
+          {isLoading && messages[messages.length - 1]?.role !== 'model' && <Message role="model" text="..." />}
         </div>
         <form className="chat-form" onSubmit={handleSendMessage}>
           <input
