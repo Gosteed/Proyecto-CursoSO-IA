@@ -4,6 +4,36 @@ import '../styles/layout.css'; // Asegúrate de que los estilos para el chat est
 import Code from './Code'; // 1. Importamos el componente Code
 import UnitsIndex from './UnitsIndex'; // Importamos el nuevo índice
 
+// 1. Creamos un componente para renderizar texto con formato Markdown simple
+const MarkdownRenderer = ({ text }) => {
+  const lines = text.split('\n');
+
+  const renderLine = (line) => {
+    // **bold**
+    line = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    // *italic*
+    line = line.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    return <span dangerouslySetInnerHTML={{ __html: line }} />;
+  };
+
+  return (
+    <>
+      {lines.map((line, i) => {
+        if (line.startsWith('## ')) {
+          return <h2 key={i} style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>{renderLine(line.substring(3))}</h2>;
+        }
+        if (line.startsWith('### ')) {
+          return <h3 key={i} style={{ marginTop: '0.8rem', marginBottom: '0.4rem' }}>{renderLine(line.substring(4))}</h3>;
+        }
+        if (line.startsWith('* ')) {
+          return <li key={i}>{renderLine(line.substring(2))}</li>;
+        }
+        return <p key={i} style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{renderLine(line)}</p>;
+      })}
+    </>
+  );
+};
+
 // Componente para renderizar mensajes con formato (maneja saltos de línea)
 const Message = ({ role, text }) => {
   const isModel = role === 'model';
@@ -26,8 +56,8 @@ const Message = ({ role, text }) => {
         if (index % 3 === 2) { // Es el contenido del bloque de código, ya lo procesamos
           return null;
         }
-        // Es texto plano
-        return <p key={index} style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{part}</p>;
+        // 2. Usamos nuestro nuevo renderer para el texto plano
+        return <MarkdownRenderer key={index} text={part} />;
       })}
     </div>
   );
